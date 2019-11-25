@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mute City.ogg-ec1ecc6239898e48e4cd3fbe391a1cef.oggstr"
+
+[deps]
+
+source_file="res://Assets/Mute City.ogg"
+dest_files=[ "res://.import/Mute City.ogg-ec1ecc6239898e48e4cd3fbe391a1cef.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
