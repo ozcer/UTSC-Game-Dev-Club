@@ -60,7 +60,7 @@ func _process(delta):
 			if Input.is_action_just_released("Jump"):
 				change_state("rise")
 			else:
-				velocity.y -= lift
+				velocity.y -= lift * delta
 
 	var floor_collision = move_and_collide(velocity)
 

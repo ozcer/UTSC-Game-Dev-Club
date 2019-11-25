@@ -58,7 +58,7 @@ gradient = SubResource( 5 )
 trail_color_modifier = SubResource( 6 )
 flag_disable_z = true
 gravity = Vector3( -100, 0, 0 )
-angular_velocity = 1.01391e-08
+angular_velocity = 1.01391e-008
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
@@ -187,6 +187,7 @@ __meta__ = {
 stream = ExtResource( 7 )
 pitch_scale = 1.6
 autoplay = true
+
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
 [connection signal="area_entered" from="JumpHurtbox" to="." method="_on_player_area_entered"]
 [connection signal="area_entered" from="RunHurtbox" to="." method="_on_player_area_entered"]

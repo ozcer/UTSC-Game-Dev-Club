@@ -131,12 +131,13 @@ text = "Resume"
 
 [node name="PowerUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
-[connection signal="newPhase" from="." to="U_Bar" method="_on_newPhase"]
-[connection signal="newPhase" from="." to="Camera2D" method="_on_newPhase"]
-[connection signal="newPhase" from="." to="." method="_on_newPhase"]
-[connection signal="newPhase" from="." to="L_Bar" method="_on_newPhase"]
-[connection signal="newPhase" from="." to="Player" method="_on_newPhase"]
+
 [connection signal="newPhase" from="." to="BGM" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="U_Bar" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="L_Bar" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="Camera2D" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="Player" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="." method="_on_newPhase"]
 [connection signal="pauseGame" from="Player" to="." method="_on_pauseGame"]
 [connection signal="playerJump" from="Player" to="Camera2D" method="_on_playerJump"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

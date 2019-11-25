@@ -1,0 +1,7 @@
+TODO:
+
+- Rotation angle randomized when dropping off at dropoff area
+- more growing space
+- expiration timer (optional)
+- bug on growing melons xd
+- random map generation for dirt
