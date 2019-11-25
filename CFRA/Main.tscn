@@ -13,8 +13,9 @@
 [ext_resource path="res://Assets/level_3.png" type="Texture" id=11]
 [ext_resource path="res://Assets/level_4.png" type="Texture" id=12]
 [ext_resource path="res://Assets/level_5.png" type="Texture" id=13]
-[ext_resource path="res://arial_narrow_7.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://Assets/you-got-boost-power.wav" type="AudioStream" id=15]
+[ext_resource path="res://font.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Dev.gd" type="Script" id=15]
+[ext_resource path="res://Assets/you-got-boost-power.wav" type="AudioStream" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,10 +24,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=2]
-size = 64
-font_data = ExtResource( 14 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -83,6 +80,7 @@ __meta__ = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = 128
 
 [node name="Score" type="Label" parent="CanvasLayer"]
@@ -90,20 +88,59 @@ margin_left = 15.3339
 margin_top = 13.8005
 margin_right = 119.334
 margin_bottom = 106.8
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Dev" type="Label" parent="CanvasLayer"]
+visible = false
+margin_left = 921.334
+margin_top = 13.8005
+margin_right = 1025.33
+margin_bottom = 106.8
+custom_fonts/font = ExtResource( 14 )
+text = "Dev"
+script = ExtResource( 15 )
+
+[node name="PauseScreen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.231373, 0.231373, 0.231373, 0.784314 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Restart" type="Button" parent="CanvasLayer/PauseScreen"]
+margin_left = 389.0
+margin_top = 138.0
+margin_right = 637.0
+margin_bottom = 230.0
+custom_fonts/font = ExtResource( 14 )
+text = "Restart"
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseScreen"]
+visible = false
+margin_left = 389.0
+margin_top = 276.0
+margin_right = 637.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 14 )
+text = "Resume"
 
 [node name="PowerUp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
-[connection signal="phaseFive" from="." to="." method="_on_phaseFive"]
-[connection signal="phaseFive" from="." to="Player" method="_on_phaseFive"]
-[connection signal="phaseFour" from="." to="U_Bar" method="_on_phaseFour"]
-[connection signal="phaseFour" from="." to="L_Bar" method="_on_phaseFour"]
-[connection signal="phaseFour" from="." to="Camera2D" method="_on_phaseFour"]
-[connection signal="phaseFour" from="." to="." method="_on_phaseFour"]
-[connection signal="phaseFour" from="." to="Player" method="_on_phaseFour"]
-[connection signal="phaseOne" from="." to="Camera2D" method="_on_phaseOne"]
-[connection signal="phaseThree" from="." to="Player" method="_on_phaseThree"]
-[connection signal="phaseTwo" from="." to="BGM" method="_on_phaseTwo"]
+stream = ExtResource( 16 )
+[connection signal="newPhase" from="." to="U_Bar" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="Camera2D" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="." method="_on_newPhase"]
+[connection signal="newPhase" from="." to="L_Bar" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="Player" method="_on_newPhase"]
+[connection signal="newPhase" from="." to="BGM" method="_on_newPhase"]
+[connection signal="pauseGame" from="Player" to="." method="_on_pauseGame"]
 [connection signal="playerJump" from="Player" to="Camera2D" method="_on_playerJump"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="Camera2D/Shake" to="Camera2D" method="_on_Shake_timeout"]
+[connection signal="devMode" from="CanvasLayer/Dev" to="Player" method="_on_devMode"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseScreen/Resume" to="." method="_on_Resume_pressed"]

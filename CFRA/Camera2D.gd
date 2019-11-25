@@ -8,6 +8,9 @@ var screen_shake = 0
 var offsets = Vector2(0, 0)
 var transition_time = 0.35
 
+func zoom_out():
+	transition_camera(Vector2(.5, .5), Vector2())
+
 func zoom_in():
     transition_camera(Vector2(.35, .35), Vector2(-76.8, 30))
 
@@ -36,9 +39,12 @@ func _on_Shake_timeout():
 	screen_shake = 0
 	offset = offsets
 
-func _on_phaseOne():
-	shake_severity = 3
-
-func _on_phaseFour():
-	print("yesy")
-	zoom_in()
+func _on_newPhase(num):
+	if num >= 1:
+		shake_severity = 5
+	else:
+		shake_severity = 0
+	if num >= 4:
+		zoom_in()
+	else:
+		zoom_out()
