@@ -5,3 +5,8 @@ TODO:
 - expiration timer (optional)
 - bug on growing melons xd
 - random map generation for dirt
+- Harrison: worms
+	- Eats melons at a certain rate
+	- Need to hit once
+	- At certain random time intervals
+	- As countdown goes down, the rate of worm spawns increase
